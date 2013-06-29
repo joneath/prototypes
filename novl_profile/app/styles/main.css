@@ -12,7 +12,8 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
-a:hover {
+a:hover,
+a.active {
   color: #444;
 }
 p {
@@ -110,7 +111,7 @@ header .right-nav {
   width: 30%;
   max-width: 500px;
   border-right: 1px solid rgba(0,0,0,.6);
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
@@ -121,6 +122,7 @@ header .right-nav {
 }
 .profile-wrap .profile-cont {
   padding: 20px;
+  padding-bottom: 60px;
   position: relative;
   text-align: center;
 }
@@ -136,11 +138,28 @@ header .right-nav {
 }
 .profile-wrap h1 {
   font-size: 32px;
-  margin-bottom: 6px;
+  font-weight: 600;
+  margin-bottom: 5px;
 }
 .profile-wrap h2 {
-  font-size: 22px;
-  margin-bottom: 8px;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+.profile-wrap .actions-wrap {
+  height: 40px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.actions-wrap .actions {
+  margin: 0 20px;
+  border-top: 1px solid #ddd;
+}
+.actions a {
+  height: 100%;
+  display: block;
+  line-height: 40px;
 }
 .accordian-nav {
   height: 100%;
@@ -342,10 +361,9 @@ header .right-nav {
 .novl-wrap .stats-block {
   width: 100px;
   height: 100%;
-  padding-top: 10px;
   padding-right: 15px;
   position: absolute;
-  bottom: 0;
+  bottom: 1px;
   left: -100px;
 }
 .novl-wrap .stats {
@@ -403,8 +421,6 @@ header .right-nav {
   right: 0;
   top: 0;
   bottom: 0;
-  overflow: scroll;
-  -webkit-overflow-scrolling: touch;
 }
 .wrapper-inner {
   max-width: 900px;
@@ -420,6 +436,61 @@ header .right-nav {
 }
 .wrapper-footer a:hover {
   color: #777;
+}
+
+/* Profile Actions */
+.profile-actions {
+  height: 40px;
+  margin-bottom: 20px;
+  margin-left: -70px;
+  display: block;
+}
+.profile-actions .create {
+  height: 100%;
+  padding-left: 47px;
+  padding-right: 25px;
+  margin: 0;
+  outline: none;
+  display: block;
+  float: left;
+  border: none;
+  border-radius: 3px;
+  background-color: #E77E64;
+  color: #FFF;
+  font-size: 16px;
+  font-family: "proxima-nova",sans-serif;
+  line-height: 40px;
+  cursor: pointer;
+  -webkit-font-smoothing: antialiased;
+  background-image: url(/images/write.png);
+  background-repeat: no-repeat;
+  background-position: 19px 50%;
+  background-size: 20px;
+}
+.profile-actions .create:hover {
+  border-bottom: 1px solid #C06650;
+}
+.profile-actions .create:active {
+  background-color: #CF6E55;
+  border-top: 1px solid #AD5C48;
+  border-bottom: none;
+  box-shadow: none;
+}
+
+.profile-actions .filters {
+  margin-top: 12px;
+  float: right;
+}
+.filters li {
+  margin-right: 10px;
+  padding-right: 10px;
+  float: left;
+  border-right: 1px solid #DDD;
+}
+.filters li:last-child {
+  margin-right: 0;
+  padding-right: 0;
+  border-right: none;
 }
 
 /* Large Screen */
@@ -483,7 +554,12 @@ header .right-nav {
   .profile-wrap .profile-cont {
     margin: 0 40px;
     margin-top: -72px;
+    padding-bottom: 40px;
     border-bottom: 1px solid #ddd;
+  }
+  .actions-wrap .actions {
+    display: inline-block;
+    border-top: none;
   }
 }
 
@@ -530,6 +606,7 @@ header .right-nav {
     padding: 0 10px;
     position: relative;
     left: 0;
+    bottom: 0;
     border-bottom: 1px solid #ddd;
   }
   .novl-wrap .stats {
@@ -586,5 +663,10 @@ header .right-nav {
   .accordian-nav li {
     /*width: 100%;*/
     -webkit-transition: width .55s ease;
+  }
+
+  .profile-actions {
+    margin-left: 15px;
+    margin-right: 15px;
   }
 }
