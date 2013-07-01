@@ -25,6 +25,7 @@ p {
   border-radius: 100%;
   display: inline-block;
   background-size: cover;
+  vertical-align: middle;
 }
 .container {
   height: 100%;
@@ -123,9 +124,9 @@ header .right-nav {
 }
 .novl-content {
   width: 100%;
-  padding: 25px;
-  padding-top: 25%;
-  padding-bottom: 50px;
+  padding: 20px;
+  padding-top: 15%;
+  padding-bottom: 10px;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -145,7 +146,8 @@ header .right-nav {
 
 }
 .novl-content .attribution {
-  margin-bottom: 8px;
+  margin-top: 8px;
+  line-height: 40px;
 }
 .attribution a {
   color: #ccc;
@@ -154,6 +156,16 @@ header .right-nav {
 .attribution a:hover {
   color: #fff;
 }
+.attribution .profile-thumb {
+  height: 50px;
+  width: 50px;
+  margin-right: 5px;
+}
+.attribution .posted-at {
+  margin-left: 5px;
+  color: #ddd;
+  font-size: 14px;
+}
 .actions {
   height: 40px;
   width: 100%;
@@ -161,6 +173,7 @@ header .right-nav {
   bottom: 0;
   right: 0;
   overflow: hidden;
+  display: none;
 }
 .actions a {
   width: calc(50% - 25px);
@@ -291,7 +304,7 @@ header .right-nav {
   background-color: #111;
 }
 .wrapper-inner {
-  padding: 30px;
+  padding: 42px 30px;
   padding-bottom: 125px;
   text-align: center;
   background-color: #111;
@@ -343,6 +356,20 @@ header .right-nav {
 }
 .runout-actions .retell {
   float: left;
+  margin-left: 10px;
+  background-color: #969696;
+}
+.runout-actions .retell:hover {
+  border-bottom: 1px solid #727272;
+}
+.runout-actions .retell:active {
+  background-color: #707070;
+  border-top: 1px solid #4D4D4D;
+  border-bottom: none;
+}
+.runout-actions .like {
+  float: left;
+  background-image: url(/images/heart.png);
 }
 .runout-actions .social {
   height: 40px;
@@ -536,7 +563,7 @@ header .right-nav {
   padding-left: 15px;
 }
 .stats .hearts {
-  background-image: url(/images/heart.png);
+  background-image: url(/images/heart_grey.png);
   background-repeat: no-repeat;
   background-size: 14px;
   background-position: 1px 50%;
@@ -616,7 +643,7 @@ header .right-nav {
   .novl-content {
     height: 100% !important;
     width: 100%;
-    padding: 60px;
+    padding: 20px;
     padding-bottom: 10px;
     padding-top: 42px;
     display: table;
@@ -629,7 +656,7 @@ header .right-nav {
     text-align: center;
   }
   .context-wrap {
-    height: 200px;
+    height: 300px;
     width: 100%;
     max-width: none;
     position: relative!important;
@@ -681,12 +708,17 @@ header .right-nav {
   .actions .text {
     display: none;
   }
+
+  .attribution .profile-thumb {
+    height: 60px;
+    width: 60px;
+  }
 }
 
 /* Phone */
 @media (max-width: 500px) {
   .context-wrap {
-    height: 250px;
+    height: 350px;
   }
   .wrapper-inner {
     padding: 20px 0;
@@ -721,6 +753,10 @@ header .right-nav {
   }
 
   /* Runout */
+  .runout {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
   .runout section {
     width: 100%;
     float: none;

@@ -38,5 +38,5 @@ require(['app', 'jquery', 'underscore', 'backbone'], function (app, $) {
     $('body').on('click touchstart', '.glass', function(e) {
         $('.menu').trigger('click');
     });
-    $('.menu').trigger('click');
+    // $('.menu').trigger('click');
 });

@@ -33,11 +33,17 @@ strong {
   height: 100%;
   position: relative;
   z-index: 1;
-  -webkit-transition: all .4s ease;
-     -moz-transition: all .4s ease;
-      -ms-transition: all .4s ease;
-       -o-transition: all .4s ease;
-          transition: all .4s ease;
+  background-color: #fefefe;
+  -webkit-transition: -webkit-transform .4s ease;
+     -moz-transition: -moz-transform .4s ease;
+      -ms-transition: -ms-transform .4s ease;
+       -o-transition: -o-transform .4s ease;
+          transition: transform .4s ease;
+}
+.scroller {
+  /*height: 100%;*/
+  /*overflow: auto;
+  -webkit-overflow-scrolling: touch;*/
 }
 .menu-shown {
   overflow: hidden;
@@ -59,18 +65,38 @@ strong {
   top: 0;
   left: 0;
   z-index: 0;
-  background-color: #383838;
+  background-color: #3C3C3C;
+}
+.left-nav-wrap nav {
 }
 .left-nav-wrap h4 {
   height: 30px;
   padding: 0 10px;
-  background-color: #5E5E5E;
-  color: #fff;
-  font-weight: 700;
+  color: #DDD;
+  font-weight: 600;
   font-size: 14px;
   line-height: 30px;
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: #484848;
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+.left-nav-wrap h4 a {
+  height: 20px;
+  padding: 0 7px;
+  float: right;
+  line-height: 20px;
+  background-color: #333;
+  margin-top: 4px;
+  border-radius: 10px;
+  border-bottom: 1px solid #666;
+  font-weight: 700;
+  font-size: 20px;
+}
+.left-nav-wrap h4 a:hover {
+  color: #fff;
+}
+.left-nav-wrap h4 a:active {
+  background-color: #222;
 }
 .left-nav-wrap .help-text {
   padding: 5px 10px;
@@ -78,23 +104,24 @@ strong {
   font-size: 14px;
   color: #666;
   border-bottom: 1px solid #E6E6E6;
+  display: none;
 }
 .left-nav-wrap h4:first-child {
   border-top: none;
 }
 .left-nav-wrap .nav-items {
-
 }
 .left-nav-wrap .nav-item {
   height: 40px;
   line-height: 40px;
-  border-bottom: 1px solid rgba(255,255,255,.2);
+  border-bottom: 1px solid rgba(255,255,255,.15);
+  position: relative;
 }
 .left-nav-wrap .nav-item:last-child {
   border-bottom: none;
 }
 .nav-item.action {
-  background-color: #DF6041;
+  background-color: #E77E64;
 }
 .nav-item.action a {
   padding-left: 0;
@@ -116,11 +143,15 @@ strong {
   float: left;
   text-align: center;
   font-weight: 700;
-  background-color: #C74F32;
+  background-color: #E5603E;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
 .nav-item.action h3 {
   float: left;
+}
+.nav-item h2 {
+  font-weight: 600;
+  font-size: 15px;
 }
 .nav-item a {
   height: 100%;
@@ -132,8 +163,10 @@ strong {
   display: block;
 }
 .nav-item a:hover {
-  background-color: #777;
   color: #fff;
+}
+.nav-item.action a:hover {
+  background-color: #E5603E;
 }
 .nav-item.with-icon a {
   padding-left: 53px;
@@ -141,38 +174,62 @@ strong {
 .nav-item .icon {
   height: 40px;
   width: 40px;
-  margin-left: -53px;
+  margin-left: -56px;
   display: block;
   float: left;
 }
 .left-nav-wrap .icon.home {
   background-image: url(/images/home.png);
   background-repeat: no-repeat;
-  background-position: 8px 5px;
-  background-size: 32px;
+  background-position: 13px 6px;
+  background-size: 26px;
 }
-.left-nav-wrap .nav-item.settings {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  border-top: 1px solid;
-}
-.left-nav-wrap .nav-item.settings a {
+.left-nav-wrap .icon.profile {
+  height: 34px;
+  width: 34px;
+  margin-top: 3px;
+  margin-left: -47px;
+  background-size: cover;
+  border: 1px solid #B4B4B4;
+  border-radius: 100%;
 }
 .left-nav-wrap .icon.settings {
   background-image: url(/images/settings.png);
   background-repeat: no-repeat;
-  background-position: 8px 5px;
-  background-size: 32px;
+  background-position: 8px 50%;
+  background-size: 20px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.left-nav-wrap .icon.settings:hover {
+  background-image: url(/images/settings_hover.png);
+}
+.notifications-wrap {
 }
 .left-nav-wrap .notifications {
-
+  position: relative;
+  height: 100%;
+  overflow: auto;
 }
 .left-nav-wrap .notification {
   height: 50px;
   position: relative;
-  background-color: #111;
+  background-color: #222;
+  border-bottom: 1px solid #353535;
+  cursor: pointer;
+}
+.notification:hover {
+  background-color: #fefefe;
+}
+.notification:hover .profile-thumb {
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.45);
+}
+.notification:hover p {
+  color: #444;
+}
+.notification:hover a {
+  color: #444;
 }
 
 .notification .bg {
@@ -192,26 +249,27 @@ strong {
   padding-right: 10px;
   position: relative;
   z-index: 1;
-  color: #fff;
+  color: #D8D8D8;
 }
 .notification-content .profile-thumb {
   float: left;
   margin-left: -48px;
   margin-top: 5px;
   border-radius: 5px;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25);
 }
 .notification-content p {
   display: inline;
+  font-size: 15px;
+  line-height: 22px;
 }
 .notification-content span {
-  color: #aaa;
+  color: #7C7C7C;
+  font-size: 15px;
+  white-space: nowrap;
 }
 .notification-content a {
-  color: #DF6041;
-}
-.notification-content a:hover{
-  text-decoration: underline;
+  color: #fff;
 }
 .notification-content .center {
   text-align: left;
@@ -250,6 +308,37 @@ strong {
   opacity: .75;
 }
 
+.add {
+  height: 40px;
+  margin: 0;
+  padding: 0 20px;
+  display: block;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  color: #777;
+  font-size: 16px;
+  font-family: "proxima-nova",sans-serif;
+  line-height: 44px;
+  cursor: pointer;
+  -webkit-font-smoothing: antialiased;
+  background-repeat: no-repeat;
+  background-position: 19px 50%;
+  background-size: 20px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 600;
+}
+.add:hover {
+  color: #444;
+  background-image: url(/images/add_hover.png);
+}
+.add:active {
+  color: #fff;
+  background-color: #CF6E55;
+  background-image: url(/images/add_active.png);
+}
+
 header {
   width: 100%;
   height: 42px;
@@ -268,7 +357,7 @@ header .menu {
   top: 0;
   background-image: url(/images/menu.png);
   background-repeat: no-repeat;
-  background-position: 8px 5px;
+  background-position: 8px 10px;
   background-size: 32px;
 }
 header .menu:hover {
@@ -280,34 +369,18 @@ header .mark-wrap {
   text-align: center;
   text-shadow: 0 -1px #fff;
 }
-header .right-nav {
-  height: 100%;
+header .add {
+  height: 42px;
+  padding-left: 44px;
+  padding-right: 20px;
   position: absolute;
-  right: 0;
   top: 0;
-}
-.right-nav a {
-  float: left;
-  line-height: 42px;
-}
-.right-nav .profile-thumb {
-  height: 41px;
-  width: 41px;
-  margin-top: 0;
+  right: 0;
   border-radius: 0;
-  display: block;
+  background-image: url(/images/add.png);
+  background-size: 18px;
+  background-position-y: 12px;
 }
-/*.right-nav .add {
-  margin-right: 0;
-  padding: 0 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-.right-nav .add:hover {
-  color: #fff;
-  background-color: #3CAFC5;
-  text-shadow: 0 -1px rgba(0,0,0,.3);
-}*/
 .mark-wrap a {
   padding: 0 20px;
   display: inline-block;
@@ -332,6 +405,8 @@ header .right-nav {
   height: calc(100% - 42px);
   height: -webkit-calc(100% - 42px);
   overflow: hidden;
+  border: 0;
+  border-spacing: 0;
 }
 .accordian-nav ul {
   height: 100%;
@@ -407,58 +482,6 @@ header .right-nav {
   top: 10px;
 }
 
-.articles-header {
-  width: 100%;
-  margin-bottom: 15px;
-}
-.articles-header .add-wrap {
-  float: right;
-  font-size: 15px;
-}
-.add-wrap .add-options {
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  float: left;
-}
-.add-options li {
-  float: left;
-}
-.add-wrap span {
-  padding: 8px 15px;
-  float: left;
-}
-.add-wrap a {
-  padding: 8px 15px;
-  padding-left: 40px;
-  float: left;
-}
-.add-wrap a:hover {
-  box-shadow: 0px 3px 3px -2px rgba(0,0,0,.1);
-}
-.add-wrap a:active {
-  background-color: #eee;
-  box-shadow: none;
-}
-.add-wrap .web {
-  border-right: 1px solid #ddd;
-  background-image: url(/images/cloud.png);
-  background-repeat: no-repeat;
-  background-position: 7px 3px;
-  background-size: 28px;
-}
-.add-wrap .web:hover {
-  background-image: url(/images/cloud_hover.png);
-}
-.add-wrap .upload {
-  background-image: url(/images/upload.png);
-  background-repeat: no-repeat;
-  background-position: 12px 5px;
-  background-size: 20px;
-}
-.add-wrap .upload:hover {
-  background-image: url(/images/upload_hover.png);
-}
-
 /* Novls */
 .novl-wrap {
   height: 220px;
@@ -498,6 +521,7 @@ header .right-nav {
 .novl-content h3 {
   margin-bottom: 3px;
   font-size: 36px;
+  line-height: 40px;
   font-weight: 600;
 }
 .novl-wrap .bottom {
@@ -531,7 +555,7 @@ header .right-nav {
   height: 100%;
   padding-right: 15px;
   position: absolute;
-  bottom: 0;
+  bottom: 1px;
   left: -160px;
 }
 .novl-wrap .stats {
@@ -542,10 +566,10 @@ header .right-nav {
   line-height: 30px;
   text-align: right;
   float: right;
-  color: #CECECE;
 }
 .stats li h4 {
   padding-left: 10px;
+  color: #aaa;
 }
 .stats .position {
   width: 75px;
@@ -566,6 +590,8 @@ header .right-nav {
 }
 .stats .posted-at h4 {
   padding-left: 15px;
+  line-height: 18px;
+  color: #cecece;
 }
 .stats .hearts {
   background-image: url(/images/heart.png);
@@ -590,7 +616,7 @@ header .right-nav {
 }
 .wrapper-inner {
   max-width: 900px;
-  padding: 20px 40px;
+  padding: 42px 40px;
   margin-left: 120px;
 }
 .wrapper-footer {
@@ -613,15 +639,12 @@ header .right-nav {
 
 /* Tablet */
 @media (max-width: 1000px) {
-  .container {
-    overflow: visible;
-  }
   header {
     background: rgba(255,255,255,.95);
     position: fixed;
   }
   .context-wrap {
-    height: 300px;
+    height: 350px;
     width: 100%;
     max-width: none;
     position: relative!important;
@@ -634,7 +657,7 @@ header .right-nav {
   }
   .accordian-nav {
     height: 100%;
-    margin-top: 42px;
+    padding-top: 42px;
   }
   .accordian-nav li {
     height: 100%;
@@ -710,6 +733,7 @@ header .right-nav {
     padding: 0 10px;
     position: relative;
     left: 0;
+    bottom: 0;
     border-bottom: 1px solid #ddd;
   }
   .novl-wrap .stats {
@@ -723,6 +747,9 @@ header .right-nav {
     text-align: left;
     line-height: 40px;
     font-size: 14px;
+  }
+  .stats.bottom {
+    left: 0;
   }
   .stats .position {
     width: auto;
