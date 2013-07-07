@@ -20,4 +20,43 @@ require(['app', 'jquery', 'underscore', 'backbone'], function (app, $) {
         $('.accordian-nav li').addClass('shrunk');
         $(e.currentTarget).removeClass('shrunk');
     });
+
+    function toggleComments() {
+        $('.comments-trigger').toggleClass('active');
+        $('.comments-wrap').removeClass('hidden');
+        setTimeout(function() {
+            $('body').toggleClass('comments-shown');
+        }, 1);
+    }
+
+    $('.comments-trigger').on('click', toggleComments);
+
+    $('.comments-cont .close').on('click', toggleComments);
+
+    $('.comment-actions .favorite').on('click', function() {
+        var $el = $(this),
+            $a = $el.find('a');
+
+        if ($el.hasClass('active')) {
+            $a.text('Recommend');
+        } else {
+            $a.text('Recommended');
+        }
+        $el.toggleClass('active');
+        $el.closest('.comment').toggleClass('liked');
+    }) ;
+
+    $('.comment-actions .report').on('click', function() {
+        var $el = $(this),
+            $a = $el.find('a');
+
+        if ($el.hasClass('active')) {
+            $a.text('Report');
+        } else {
+            $a.text('Reported');
+        }
+
+        $el.toggleClass('active');
+        $el.closest('.comment').toggleClass('reported');
+    });
 });

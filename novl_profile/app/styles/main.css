@@ -17,8 +17,8 @@ a.active {
   color: #444;
 }
 p {
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 18px;
+  line-height: 1.2;
 }
 .profile-thumb {
   height: 40px;
@@ -41,40 +41,43 @@ p {
 }
 
 .add {
-  height: 40px;
+  height: 42px;
   margin: 0;
-  padding: 0 20px;
+  padding: 0 15px;
+  padding-left: 40px;
   display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
   outline: none;
   border: none;
-  border-radius: 3px;
-  color: #777;
-  font-size: 16px;
+  border-radius: 0;
+  color: #fff;
   font-family: "proxima-nova",sans-serif;
   line-height: 44px;
   cursor: pointer;
   -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  font-weight: 500;
+  background-image: url(/images/write.png);
   background-repeat: no-repeat;
-  background-position: 19px 50%;
+  background-position: 12px 50%;
   background-size: 20px;
-  text-transform: uppercase;
-  font-size: 13px;
-  font-weight: 600;
+  background-color: #E77E64;
 }
 .add:hover {
-  color: #444;
-  background-image: url(/images/add_hover.png);
+  color: #fff;
 }
 .add:active {
   color: #fff;
   background-color: #CF6E55;
-  background-image: url(/images/add_active.png);
+  border-top: 1px solid #CF6E55;
 }
 
 header {
   width: 100%;
   height: 42px;
-  border-bottom: 1px solid #bbb;
+  box-shadow: 0 1px rgba(0, 0, 0, 0.2);
   background: #fdfdfd;
   position: relative;
   top: 0;
@@ -100,18 +103,6 @@ header .mark-wrap {
   height: 100%;
   text-align: center;
   text-shadow: 0 -1px #fff;
-}
-header .add {
-  height: 42px;
-  padding-left: 44px;
-  padding-right: 20px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  border-radius: 0;
-  background-image: url(/images/add.png);
-  background-size: 18px;
-  background-position-y: 12px;
 }
 
 .center-wrap {
@@ -202,7 +193,7 @@ header .add {
 }
 .accordian-nav {
   height: 100%;
-  width: 100.2%;
+  width: 100.1%;
   height: calc(100% - 42px);
   height: -webkit-calc(100% - 42px);
   overflow: hidden;
@@ -394,7 +385,7 @@ header .add {
   height: 55px;
   width: 55px;
   margin-bottom: 5px;
-  border-radius: 5px;
+  border-radius: 3px;
   box-shadow: inset 0 0 0 1px rgba(0,0,0,.4);
 }
 .novl-wrap .stats-block {
