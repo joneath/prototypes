@@ -34,14 +34,15 @@ p {
 .container {
   height: 100%;
   position: relative;
+  background-color: #555;
 }
 header {
   width: 100%;
   height: 42px;
   background: rgba(0,0,0,.25);
-  border-bottom: 1px solid rgba(0,0,0,.2);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
-  position: absolute;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
@@ -133,13 +134,12 @@ header .right-nav {
   display: none;
 }
 .context-wrap {
-  height: 100%;
-  width: 30%;
-  max-width: 500px;
-  box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.50);
+  height: 300px;
+  width: 100%;
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.35);
   border-right: 1px solid rgba(0, 0, 0, 0.6);
   background: #111;
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   z-index: 100;
@@ -147,6 +147,9 @@ header .right-nav {
 .novl-meta-wrap {
   height: 100%;
   position: relative;
+}
+.novl-meta-wrap .novl-content {
+  cursor: default;
 }
 .bg {
   height: 100%;
@@ -161,31 +164,40 @@ header .right-nav {
   opacity: .7;
 }
 .novl-content {
+  height: 100% !important;
   width: 100%;
   padding: 20px;
-  padding-top: 15%;
   padding-bottom: 10px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%,rgba(0, 0, 0, 0.75) 100%);
+  padding-top: 42px;
+  display: table;
+  table-layout: fixed;
+  position: relative;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%,rgba(0, 0, 0, 0.30) 100%);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   color: #fff;
 }
+.novl-content {
+  width: 100%;
+}
 .novl-content .content-center {
-  text-align: left;
+  text-align: center;
 }
 .novl-content .title {
   margin-bottom: 5px;
   font-size: 48px;
 }
 .novl-content .description {
+  padding: 0;
   font-weight: 300;
   font-size: 18px;
 }
 .novl-content .attribution {
-  margin-top: 8px;
+  width: 100%;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: left;
   line-height: 50px;
 }
 .attribution a {
@@ -303,13 +315,43 @@ header .right-nav {
 }
 
 /* Comments */
+.glass {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100000;
+  background: #000;
+  opacity: 0;
+  -webkit-transition: opacity .4s ease;
+     -moz-transition: opacity .4s ease;
+      -ms-transition: opacity .4s ease;
+       -o-transition: opacity .4s ease;
+          transition: opacity .4s ease;
+}
+.comments-shown .glass {
+  opacity: .65;
+}
+.comments-shown {
+  overflow: hidden;
+}
+.comments-shown .context-wrap,
+.comments-shown .content-wrap {
+  /*-webkit-filter: blur(5px);*/
+}
+.context-wrap,
+.content-wrap {
+  /*-webkit-transition : -webkit-filter .3s ease;*/
+}
+
 .comments-trigger {
   height: 74px;
   width: 74px;
   padding-top: 50px;
   position: fixed;
-  top: 15px;
-  right: 15px;
+  top: 57px;
+  right: 10px;
   z-index: 102;
   background: rgba(204, 204, 204, 0.3) url(/images/comment.png);
   background-repeat: no-repeat;
@@ -329,35 +371,28 @@ header .right-nav {
   background-size: 40px;
   background-position: center 12px;
 }
-.comments-trigger.active {
-  background: transparent url(/images/comment_active.png);
-  background-repeat: no-repeat;
-  background-size: 34px;
-  background-position: center 14px;
-  color: transparent;
-}
 .comments-wrap {
   height: 100%;
-  width: 400px;
+  width: 450px;
   position: fixed;
-  z-index: 101;
+  z-index: 100001;
   top: 0;
   right: 0;
   -webkit-transition: -webkit-transform .4s ease;
-  -webkit-transform: translate3d(400px, 0, 0);
+  -webkit-transform: translate3d(100%, 0, 0);
 }
 .comments-shown .comments-wrap {
   -webkit-transform: translate3d(0, 0, 0);
 }
 .comments-shown .comments-trigger {
-  -webkit-transform: translate3d(-305px, -10px, 0);
+  opacity: 0;
 }
 
 .comments-cont {
   height: 100%;
   padding: 15px;
-  padding-top: 22px;
-  background: rgba(255,255,255,.95);
+  padding-top: 15px;
+  background: rgba(255,255,255,.90);
   border-left: 1px solid #fff;
   box-shadow: -2px 0 3px -2px rgba(0,0,0,.5);
   opacity: 0;
@@ -375,20 +410,20 @@ header .right-nav {
 }
 .comments-cont .close {
   height: 40px;
-  width: 40px;
+  width: 60px;
   background: url(/images/arrow_right.png);
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: 20px center;
   background-size: 24px;
   display: block;
   position: absolute;
-  top: 15px;
+  top: 8px;
   right: 15px;
 }
 
 .comments {
   height: 100%;
-  height: -webkit-calc(100% - 145px);
+  height: -webkit-calc(100% - 111px);
   padding-top: 10px;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
@@ -470,6 +505,10 @@ header .right-nav {
   color: #444;
 }
 
+.comments-form-wrap {
+  height: -webkit-calc(100% - 38px);
+}
+
 .comment-from-wrap {
 
 }
@@ -480,10 +519,11 @@ header .right-nav {
   margin: 0;
   margin-bottom: 5px;
   border: 1px solid #ddd;
-  border-radius: 3px;
+  border-radius: 0;
   color: #444;
   font-size: 15px;
   font-family: "proxima-nova",sans-serif;
+  background: rgba(255,255,255,.5);
   resize: none;
 }
 .comment-from-wrap input[type=submit] {
@@ -527,10 +567,11 @@ header .right-nav {
 
 /* Clips */
 .clip {
-  margin-top: 30px;
+  margin-top: 40px;
   display: inline-block;
   position: relative;
   text-align: left;
+  z-index: 2;
 }
 .clip:first-child {
   margin-top: 0;
@@ -557,7 +598,10 @@ header .right-nav {
   z-index: 1;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  box-shadow: inset 2px 0 0 -1px rgba(255,255,255,0.15), inset -2px 0 0 -1px rgba(255,255,255,0.15), inset 0 2px 0 -1px rgba(255,255,255,0.15), inset 0 -2px 0 -1px rgba(0,0,0,0.55);
+  box-shadow: inset 2px 0 0 -1px rgba(255,255,255,0.12),
+              inset -2px 0 0 -1px rgba(255,255,255,0.12),
+              inset 0 2px 0 -1px rgba(255,255,255,0.12),
+              inset 0 -2px 0 -1px rgba(0,0,0,0.55);
 }
 .clip .caption {
   width: 100%;
@@ -566,10 +610,10 @@ header .right-nav {
   color: #eee;
   white-space: normal;
   background: #222;
-  border-top: 1px solid rgba(255,255,255,.1);
-  border-right: 1px solid #333;
-  border-bottom: 1px solid #333;
-  border-left: 1px solid #333;
+  border-top: 1px solid rgba(255,255,255,.07);
+  border-right: 1px solid #292929;
+  border-bottom: 1px solid #292929;
+  border-left: 1px solid #292929;
   font-size: 18px;
   font-weight: 300;
   line-height: 1.2;
@@ -578,25 +622,24 @@ header .right-nav {
 /* Callout */
 .callout {
   margin-top: 50px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   color: #FFF;
-  font-size: 32px;
+  font-size: 38px;
   font-style: italic;
   font-weight: 600;
+  line-height: 1.4;
 }
 
 .content-wrap {
   outline: 0;
-  position: absolute;
-  left: 30%;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  position: relative;
+  overflow: hidden;
   background-color: #111;
 }
 .wrapper-inner {
   padding: 42px 30px;
-  padding-bottom: 125px;
+  padding-bottom: 100px;
+  position: relative;
   text-align: center;
   background-color: #111;
 }
@@ -625,9 +668,10 @@ header .right-nav {
 /* Runout */
 .runout {
   padding: 30px;
-  padding-top: 50px;
+  padding-top: 60px;
   position: relative;
-  background-color: #fefefe;
+  overflow: hidden;
+  background-color: #fff;
 }
 .runout-wrap {
   max-width: 870px;
@@ -641,7 +685,7 @@ header .right-nav {
 }
 .runout-actions {
   height: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   display: block;
   position: relative;
 }
@@ -682,20 +726,20 @@ header .right-nav {
   background-size: 38px;
 }
 
-.runout .end {
+.end {
   height: 250px;
-  width: 340px;
-  margin-left: -170px;
+  width: 290px;
+  margin-left: -145px;
+  padding-top: 195px;
   position: absolute;
-  top: -105px;
+  bottom: -35px;
   left: 50%;
-  z-index: 0;
+  z-index: 1;
   text-align: center;
   border-radius: 100%;
-  background-color: #FEFEFE;
-  color: #DDD;
-  line-height: 110px;
-  font-size: 42px;
+  background-color: #111;
+  color: #aaa;
+  font-size: 38px;
 }
 .runout section {
   margin-bottom: 30px;
@@ -744,17 +788,18 @@ header .right-nav {
 /* Novls */
 .novls-wrap {
   margin-left: 70px;
+  text-align: left;
 }
 .novl-wrap {
-  height: 220px;
+  height: 235px;
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
   margin-right: 10px;
+  float: left;
   position: relative;
   background-color: #111;
-  border: 1px solid rgba(255, 255, 255, 0.39);
-  border-radius: 3px;
-  text-align: left;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
 }
 .novl-wrap:last-child {
   margin-bottom: 0;
@@ -769,21 +814,23 @@ header .right-nav {
   top: 0;
   left: 0;
   z-index: 0;
-  opacity: .7;
+  opacity: .9;
 }
-.novl-wrap .novl-content {
+.novl-content {
   height: 100%;
-  padding: 10px;
+  padding: 10px 14px;
   position: relative;
   z-index: 1;
   color: #fff;
   text-shadow: 0 1px rgba(0,0,0,.45);
-  background: none;
+  border-radius: 3px;
+  overflow: hidden;
   cursor: pointer;
 }
-.novl-wrap .novl-content h3 {
+.novl-content h3 {
   margin-bottom: 3px;
   font-size: 36px;
+  line-height: 40px;
   font-weight: 600;
 }
 .novl-wrap .bottom {
@@ -793,31 +840,28 @@ header .right-nav {
   left: 0;
   background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.55) 100%); /* W3C */
 }
-.novl-wrap .novl-content p {
-  padding: 10px;
-  padding-top: 25px;
+.novl-content p {
+  padding: 10px 14px;
 }
-.novl-wrap .attribution {
+.attribution {
   width: 100%;
   text-align: right;
   color: #CECECE;
 }
-.novl-wrap .attribution a:hover {
+.attribution a:hover {
   text-decoration: underline;
 }
-.novl-wrap .attribution .profile-thumb {
+.attribution .profile-thumb {
   height: 55px;
   width: 55px;
-  display: block;
   border-radius: 3px;
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,.4);
+  box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.65);
 }
 .novl-wrap .stats-block {
-  width: 70px;
+  width: 55px;
   height: 100%;
-  padding-right: 15px;
   position: absolute;
-  bottom: 0;
+  bottom: 1px;
   left: -70px;
 }
 .novl-wrap .stats {
@@ -828,10 +872,10 @@ header .right-nav {
   line-height: 30px;
   text-align: right;
   float: right;
-  color: #CECECE;
 }
 .stats li h4 {
   padding-left: 10px;
+  color: #aaa;
 }
 .stats .position {
   width: 75px;
@@ -846,15 +890,18 @@ header .right-nav {
   width: 100%;
   position: absolute;
   bottom: 0;
-  left: -15px;
+  left: 0;
   color: #ddd;
   background: none;
 }
 .stats .posted-at h4 {
-  padding-left: 15px;
+  padding-left: 0;
+  line-height: 18px;
+  color: #cecece;
+  white-space: nowrap;
 }
 .stats .hearts {
-  background-image: url(/images/heart_grey.png);
+  background-image: url(/images/heart.png);
   background-repeat: no-repeat;
   background-size: 14px;
   background-position: 1px 50%;
@@ -895,19 +942,10 @@ header .right-nav {
 
 /* Large Screen */
 @media (min-width: 1666px) {
-  .content-wrap {
-    left: 500px;
-  }
 }
 
 /* Tablet */
 @media (max-width: 1000px) {
-  .container {
-    overflow: visible;
-  }
-  header {
-    position: fixed;
-  }
   .progress-wrap {
     display: none;
     height: 2px;
@@ -931,93 +969,6 @@ header .right-nav {
     right: 0;
     background: linear-gradient(to right, #37CFFF 0%,#A5D9F6 100%);
   }
-  .novl-content {
-    height: 100% !important;
-    width: 100%;
-    padding: 20px;
-    padding-bottom: 10px;
-    padding-top: 42px;
-    display: table;
-    table-layout: fixed;
-    position: relative;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%,rgba(0, 0, 0, 0.30) 100%);
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  }
-  .novl-content .content-center {
-    text-align: center;
-  }
-  .context-wrap {
-    height: 300px;
-    width: 100%;
-    max-width: none;
-    position: relative!important;
-    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.50);
-  }
-  .content-wrap {
-    left: 0;
-    position: relative;
-    overflow: visible;
-  }
-  .comments-trigger {
-    top: 57px;
-  }
-  .comments-wrap {
-    padding-top: 42px;
-  }
-  .comments-cont .close {
-    top: 56px;
-  }
-  .actions {
-    height: 100%;
-    height: calc(100% - 42px);
-    height: -webkit-calc(100% - 42px);
-    width: 42px;
-    top: 42px;
-    background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%);
-  }
-  .actions a {
-    width: 100%;
-    height: 50%;
-  }
-  .actions a:first-child,
-  .actions a:last-child {
-    border: none;
-  }
-  .actions a:first-child {
-    border-bottom: 1px solid rgba(0,0,0,.2);
-  }
-  .actions a:last-child {
-    border-top: 1px solid rgba(255,255,255,.1);
-  }
-  .actions .icon {
-    margin-top: 50%;
-    float: none;
-    display: block;
-  }
-  .icon-text.comment .icon {
-    margin-top: 10px;
-  }
-  .icon-text.comment .count {
-    height: auto;
-    margin-left: 0;
-    float: none;
-    display: block;
-    text-align: center;
-    line-height: 22px;
-  }
-  .actions .text {
-    display: none;
-  }
-
-  .novl-content .attribution {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    text-align: left;
-    padding: 10px;
-    margin-top: 0;
-  }
 }
 
 /* Phone */
@@ -1027,11 +978,11 @@ header .right-nav {
   }
   .wrapper-inner {
     padding: 20px 0;
-    padding-bottom: 75px;
+    padding-bottom: 70px;
   }
   .clip {
+    margin-top: 30px;
     max-width: 100%;
-    margin-top: 20px;
     border-radius: 0;
   }
   .clip .caption {
@@ -1046,18 +997,22 @@ header .right-nav {
     font-size: 15px;
     line-height: 1.3;
   }
+  .clip .img-wrap {
+    border-radius: 0;
+  }
   .clip .img-wrap:after {
     border-radius: 0;
     box-shadow: inset 0 2px 0 -1px rgba(255,255,255,0.15), inset 0 -2px 0 -1px rgba(0,0,0,0.55);
   }
   .callout {
-    margin-top: 30px;
+    margin-top: 40px;
     margin-bottom: 10px;
     font-size: 24px;
   }
 
   /* Runout */
   .runout {
+    padding-top: 80px;
     padding-left: 15px;
     padding-right: 15px;
   }
@@ -1073,14 +1028,32 @@ header .right-nav {
   }
 
   /* Comments */
+  .comments-trigger {
+    height: 64px;
+    width: 64px;
+    padding-top: 40px;
+    top: 57px;
+    right: 10px;
+    background-size: 34px;
+    background-position: center 10px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .comments-trigger:hover {
+    background-size: 40px;
+    background-position: center 12px;
+  }
   .comments-wrap {
     width: 100%;
-    -webkit-transform: translate3d(100%, 0, 0);
   }
   .comments-shown {
     overflow: hidden;
   }
-  .comments-shown .comments-trigger {
-    opacity: 0;
+  .comments {
+    height: auto;
+  }
+  .comments-form-wrap {
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
   }
 }

@@ -22,12 +22,21 @@ require(['app', 'jquery', 'underscore', 'backbone'], function (app, $) {
     });
 
     function toggleComments() {
+        if (!$('body').hasClass('comments-shown')) {
+            $('.container').append('<div class="glass"></div>');
+        } else {
+            setTimeout(function() {
+                $('.glass').remove();
+            }, 400);
+        }
         $('.comments-trigger').toggleClass('active');
         $('.comments-wrap').removeClass('hidden');
         setTimeout(function() {
             $('body').toggleClass('comments-shown');
         }, 1);
     }
+
+    $('body').on('click touchstart', '.glass', toggleComments);
 
     $('.comments-trigger').on('click', toggleComments);
 
