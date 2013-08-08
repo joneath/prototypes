@@ -3,17 +3,22 @@ require.config({
         jquery: '../components/jquery/jquery',
         underscore: '../components/underscore/underscore',
         backbone: '../components/backbone/backbone',
-        bootstrap: 'vendor/bootstrap'
+        bootstrap: 'vendor/bootstrap',
+        sticky: 'vendor/sticky'
     },
     shim: {
         backbone: {
             deps: ['underscore'],
             exports: 'backbone'
+        },
+        sticky: {
+            deps: ['jquery'],
+            exports: 'sticky'
         }
     }
 });
 
-require(['app', 'jquery', 'underscore', 'backbone'], function (app, $) {
+require(['app', 'jquery', 'underscore', 'backbone', 'sticky'], function (app, $) {
     'use strict';
 
     $('.accordian-nav li').on('click', function(e) {
@@ -22,13 +27,6 @@ require(['app', 'jquery', 'underscore', 'backbone'], function (app, $) {
     });
 
     function toggleComments() {
-        if (!$('body').hasClass('comments-shown')) {
-            $('.container').append('<div class="glass"></div>');
-        } else {
-            setTimeout(function() {
-                $('.glass').remove();
-            }, 400);
-        }
         $('.comments-trigger').toggleClass('active');
         $('.comments-wrap').removeClass('hidden');
         setTimeout(function() {
@@ -67,5 +65,23 @@ require(['app', 'jquery', 'underscore', 'backbone'], function (app, $) {
 
         $el.toggleClass('active');
         $el.closest('.comment').toggleClass('reported');
+    });
+
+    // $(".comments-wrap").sticky({topSpacing:42});
+
+    $('.btn').on('click', function() {
+        if ($('body').hasClass('join-shown')) {
+            $('body').removeClass('join-shown');
+            setTimeout(function() {
+                $('.glass').remove();
+                $('.join-modal').addClass('hidden');
+            }, 450);
+        } else {
+            $('.join-modal').removeClass('hidden');
+            $('.container').append('<div class="glass modal-glass"></div>');
+            setTimeout(function() {
+                $('body').addClass('join-shown');
+            }, 1);
+        }
     });
 });

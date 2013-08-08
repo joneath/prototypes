@@ -41,22 +41,57 @@ require(['app', 'jquery', 'underscore', 'backbone'], function (app, $) {
         $('header .add').trigger('click');
     });
 
-    // $('header .add').on('click', function() {
-    //     var $el = $(this);
+    $('.upload').on('click', function() {
+        var bgs = [
+            'http://interfacelift.com/wallpaper/D47cd523/03315_oregonspaintedhills_1440x900.jpg',
+            'http://interfacelift.com/wallpaper/D47cd523/03316_banffaurora_1440x900.jpg',
+            'http://interfacelift.com/wallpaper/D47cd523/03314_mesa_1440x900.jpg',
+            'http://interfacelift.com/wallpaper/D47cd523/03313_monumentvalley_1440x900.jpg',
+            'http://interfacelift.com/wallpaper/D47cd523/03312_thetetons_1440x900.jpg',
+            'http://interfacelift.com/wallpaper/D47cd523/03308_yellowstonebison_1440x900.jpg',
+            'http://interfacelift.com/wallpaper/D47cd523/03307_sfnighttimeskyline_1440x900.jpg',
+            'http://interfacelift.com/wallpaper/D47cd523/03302_cinqueterre_1440x900.jpg',
+            'http://interfacelift.com/wallpaper/D47cd523/03298_thehomeofthegiants_1440x900.jpg'
+        ],
+        bg = bgs[Math.floor((Math.random()*(bgs.length - 1))+1)];
 
-    //     if ($el.hasClass('active')) {
-    //         $el.text('New');
-    //         setTimeout(function() {
-    //             $('.glass').remove();
-    //         }, 400);
-    //     } else {
-    //         $el.text('Cancel');
-    //         $('.container').append('<div class="glass new-glass"></div>');
-    //     }
-    //     $el.toggleClass('active');
-    //     $('.new-story-wrap').removeClass('hidden');
-    //     setTimeout(function(){
-    //         $('body').toggleClass('new-story-shown');
-    //     }, 1);
-    // });
+        $('.context-wrap').removeClass('checkerboard');
+        $('.context-wrap .bg').css('background-image', 'url(' + bg + ')');
+    });
+    $('.add-options li').on('click', function(e) {
+        $('.add-options li').removeClass('active');
+        $(e.currentTarget).addClass('active');
+
+        var type = $(e.currentTarget).data('type');
+        if (type === 'web') {
+            $('.upload-wrap').addClass('hidden');
+            $('.upload-wrap.web-content').removeClass('hidden');
+        } else {
+            $('.upload-wrap').addClass('hidden');
+            $('.upload-wrap.upload-content').removeClass('hidden');
+        }
+    });
+
+    $('.move').on('mousedown touchstart', function(e) {
+        var y = $(e.currentTarget).offset().top;
+        // $('.clips')
+        // .css({
+        //     'transform-origin': '50% ' + y + 'px 0'
+        // })
+        // .addClass('move-on');
+        $(e.currentTarget).closest('.clip').addClass('moving');
+        return false;
+    });
+    $('.move').on('mouseup touchend', function(e) {
+        $('.clips').removeClass('move-on');
+        $(e.currentTarget).closest('.clip').removeClass('moving');
+        return false;
+    });
+    $('.actions .primary').on('click', function(e) {
+        $('.empty-text').addClass('hidden');
+        $('.clip').removeClass('hidden');
+        setTimeout(function() {
+            $('.clip').removeClass('fadeout');
+        }, 1);
+    });
 });

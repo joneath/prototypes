@@ -118,6 +118,9 @@
                     </div>
                     <ul class="edit-actions">
                         <li>
+                            <span>Saved</span>
+                        </li>
+                        <li>
                             <a href="javascript:;" class="btn">Delete</a>
                         </li>
                         <li>
@@ -125,35 +128,69 @@
                         </li>
                     </ul>
                 </header>
-                <div class="context-wrap new-story-context">
-                    <a href="javascript:;" class="upload"></a>
+                <div class="context-wrap new-story-context checkerboard">
+                    <div class="bg"></div>
                     <div class="novl-content">
                         <div class="content-center">
-                            <h1 class="title" contenteditable>Story Title Goes Here</h1>
-                            <p class="description" contenteditable>Give a description about your story here.</p>
-                            <div class="attribution">
-                                <span>
-                                    <img class="profile-thumb" src="https://profile-b.xx.fbcdn.net/hprofile-prn1/c66.66.828.828/s160x160/537884_4055053381933_824044467_n.jpg"/>
-                                    <a href="javascript:;" class="by-username">joneath</a>
-                                </span>
-                            </div>
+                            <h1 class="title" contenteditable>The Name of Your Story</h1>
+                            <br/>
+                            <p class="description" contenteditable>What's your story about?</p>
                         </div>
+                        <a href="javascript:;" class="upload">Change Cover</a>
                     </div>
                 </div>
                 <section class="content-wrap">
-                    <div class="center-wrap">
-                        <div class="content-center">
-                            <div class="add-new-wrap">
-                                <ul class="add-options">
-                                    <li>
-                                        Web
-                                    </li>
-                                    <li>
-                                        Computer
-                                    </li>
-                                </ul>
+                    <div class="add-new-wrap">
+                        <div class="add-new-internal">
+                            <ul class="add-options clearfix">
+                                <li class="active" data-type="web">
+                                    <a href="javascript:;" class="option web">Web</a>
+                                </li>
+                                <li data-type="comp">
+                                    <a href="javascript:;" class="option comp">Computer</a>
+                                </li>
+                            </ul>
+                            <div class="upload-wrap web-content">
+                                <textarea class="urls-input" placeholder="Photo URL(s)"></textarea>
+                            </div>
+                            <div class="upload-wrap upload-content hidden">
+                                <div class="upload-drop">
+                                    <h3>Click or Drop Photos</h3>
+                                    <div class="upload-internal">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <div class="right-actions">
+                                    <span class="url-count">3 Photos</span>
+                                    <a href="javascript:;" class="btn primary">Add</a>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="wrapper-inner">
+                        <p class="empty-text">Add some photos to get started.</p>
+                        <article class="clip hidden fadeout">
+                            <div class="img-wrap">
+                                <img src="http://cdn0.sbnation.com/entry_photo_images/8318547/bills_town_sunset_epic.jpg"/>
+                                <span class="move"></span>
+                            </div>
+                            <p class="caption" contenteditable>Say something about this...</p>
+                        </article>
+                        <article class="clip hidden fadeout">
+                            <div class="img-wrap">
+                                <img src="http://assets.sbnation.com/assets/2753073/RoW_Wreckage.jpg"/>
+                                <span class="move"></span>
+                            </div>
+                            <p class="caption" contenteditable>We track machinegames' path from working at starbreeze to forming a new studio to creating a new wolfenstein</p>
+                        </article>
+                        <article class="clip hidden fadeout">
+                            <div class="img-wrap">
+                                <img src="http://assets.sbnation.com/assets/2782803/killer_instinct_11.jpg"/>
+                                <span class="move"></span>
+                            </div>
+                            <p class="caption" contenteditable>Microsoft and Double Helix explain how double helix got the job and how the free to play business model works.</p>
+                        </article>
                     </div>
                 </section>
             </div>

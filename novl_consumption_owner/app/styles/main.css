@@ -6,6 +6,7 @@ body {
   color: #444;
   background-color: #fff;
   -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: none; /* Prevent font scaling in landscape */
 }
 a {
   color: #777;
@@ -134,7 +135,7 @@ header .right-nav {
   display: none;
 }
 .context-wrap {
-  height: 300px;
+  height: 350px;
   width: 100%;
   box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.35);
   border-right: 1px solid rgba(0, 0, 0, 0.6);
@@ -159,9 +160,9 @@ header .right-nav {
   left: 0;
   z-index: 0;
   background-size: cover;
-  background-position: center center;
   background-repeat: no-repeat;
-  opacity: .7;
+  background-position: center 0;
+  opacity: .75;
 }
 .novl-content {
   height: 100% !important;
@@ -172,7 +173,6 @@ header .right-nav {
   display: table;
   table-layout: fixed;
   position: relative;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%,rgba(0, 0, 0, 0.30) 100%);
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   color: #fff;
 }
@@ -188,7 +188,6 @@ header .right-nav {
 }
 .novl-content .description {
   padding: 0;
-  font-weight: 300;
   font-size: 18px;
 }
 .novl-content .attribution {
@@ -199,6 +198,7 @@ header .right-nav {
   left: 0;
   text-align: left;
   line-height: 50px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%,rgba(0, 0, 0, 0.30) 100%);
 }
 .attribution a {
   color: #ccc;
@@ -229,9 +229,9 @@ header .right-nav {
   font-weight: 500;
 }
 .attribution .edit {
-  margin-top: 9px;
+  margin-top: 8px;
   float: right;
-  background-color: rgba(109, 109, 109, 0.75);
+  background-color: rgba(170, 170, 170, 0.5);
   color: #fff;
   font-weight: 500;
   text-shadow: none;
@@ -685,7 +685,6 @@ header .right-nav {
 /* Runout */
 .runout {
   padding: 30px;
-  padding-top: 60px;
   position: relative;
   overflow: hidden;
   background-color: #fff;
@@ -708,14 +707,14 @@ header .right-nav {
 }
 .runout-actions .retell {
   float: left;
-  background-color: #969696;
+  background-color: #aaa;
 }
 .runout-actions .retell:hover {
   border-bottom: 1px solid #727272;
 }
 .runout-actions .retell:active {
-  background-color: #707070;
-  border-top: 1px solid #4D4D4D;
+  background-color: #888;
+  border-top: 1px solid #6d6d6d;
   border-bottom: none;
 }
 .runout-actions .like {
@@ -756,6 +755,7 @@ header .right-nav {
   background-color: #111;
   color: #aaa;
   font-size: 38px;
+  display: none;
 }
 .runout section {
   margin-bottom: 30px;
@@ -791,14 +791,20 @@ header .right-nav {
   font-weight: 500;
 }
 .novl-stats .user-stat {
+  min-height: 40px;
   margin-bottom: 8px;
+  padding-left: 46px;
   text-align: left;
 }
 .user-stat img {
-  margin-right: 6px;
+  margin-left: -46px;
+  float: left;
   vertical-align: middle;
   border-radius: 3px;
   box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.65);
+}
+.user-stat a {
+  line-height: 1.2;
 }
 .user-stat span {
   font-size: 14px;
@@ -1053,6 +1059,11 @@ header .right-nav {
 
 /* Phone */
 @media (max-width: 500px) {
+  .novl-stats li {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 0 !important;
+  }
   .context-wrap {
     height: 400px;
   }
@@ -1092,7 +1103,6 @@ header .right-nav {
 
   /* Runout */
   .runout {
-    padding-top: 80px;
     padding-left: 15px;
     padding-right: 15px;
   }

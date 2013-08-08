@@ -632,6 +632,31 @@ header .mark-wrap {
   font-weight: 600;
 }
 
+.main-nav .nav-message {
+  height: 100%;
+  width: 100%;
+  padding-top: 42px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.new-message-content {
+  width: 100%;
+  max-width: 920px;
+  padding: 0 60px;
+  margin: 0 auto;
+  color: #fff;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.45);
+}
+.new-message-content h1 {
+  margin-bottom: 10px;
+  font-size: 48px;
+}
+.new-message-content h2 {
+  font-size: 28px;
+}
+
 .accordian-nav {
   height: 100%;
   overflow: hidden;
@@ -719,7 +744,6 @@ header .mark-wrap {
 
 /* Novls */
 .novls-wrap {
-  margin-left: 70px;
 }
 .novl-wrap {
   height: 235px;
@@ -795,6 +819,7 @@ header .mark-wrap {
   position: absolute;
   bottom: 1px;
   left: -70px;
+  display: none;
 }
 .novl-wrap .stats {
   float: right;
@@ -852,7 +877,7 @@ header .mark-wrap {
   background-color: #fefefe;
 }
 .wrapper-inner {
-  max-width: 980px;
+  max-width: 920px;
   margin: 0 auto;
   padding: 42px 60px;
 }
@@ -880,8 +905,8 @@ header .mark-wrap {
 
 /* Phone */
 @media (max-width: 500px) {
-  .main-nav li {
-
+  .new-message-content {
+    padding: 0 20px;
   }
   .context-wrap {
   }

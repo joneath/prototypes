@@ -43,7 +43,7 @@ table {
 }
 
 .hidden {
-  display: none !important;
+  display: none;
   visibility: hidden;
 }
 

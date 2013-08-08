@@ -6,6 +6,7 @@ body {
   color: #444;
   background-color: #fdfdfd;
   -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: none; /* Prevent font scaling in landscape */
 }
 a {
   color: #777;
@@ -19,6 +20,43 @@ a.active {
 p {
   font-size: 18px;
   line-height: 1.2;
+}
+[contenteditable] {
+  padding: 5px 10px !important;
+  background-color: #333;
+  color: #fff;
+}
+[contenteditable]:hover {
+  outline: 2px dashed #aaa;
+}
+[contenteditable]:focus {
+  outline: 2px dashed #666;
+}
+.btn {
+  height: 100%;
+  margin: 0;
+  outline: none;
+  padding: 0 25px;
+  border: none;
+  border-radius: 3px;
+  background-color: #AAA;
+  color: #FFF;
+  font-size: 16px;
+  font-family: "proxima-nova",sans-serif;
+  line-height: 36px;
+  cursor: pointer;
+  -webkit-font-smoothing: antialiased;
+}
+.btn:hover {
+  color: #fff;
+  border-bottom: 1px solid #727272;
+}
+.btn:active {
+  color: #fff;
+  background-color: #888;
+  border-top: 1px solid #6D6D6D;
+  border-bottom: none;
+  box-shadow: none;
 }
 .profile-thumb {
   height: 40px;
@@ -168,10 +206,15 @@ header .mark-wrap {
   font-size: 32px;
   font-weight: 600;
   margin-bottom: 5px;
+  display: inline-block;
 }
 .profile-wrap h2 {
   font-size: 20px;
   margin-bottom: 16px;
+  display: inline-block;
+}
+.profile-wrap p {
+  display: inline-block;
 }
 .profile-wrap .actions-wrap {
   height: 40px;
@@ -188,8 +231,15 @@ header .mark-wrap {
 }
 .actions a {
   height: 100%;
-  display: block;
+  display: inline-block;
   line-height: 40px;
+}
+.actions a.cancel {
+  margin-right: 20px;
+}
+.actions a.edit-mode {
+  font-weight: 600;
+  color: #4FCF82;
 }
 .accordian-nav {
   height: 600px;
